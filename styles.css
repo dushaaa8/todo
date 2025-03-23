@@ -1,4 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
 body{
+    max-width: 100%;
     margin: 0;
     text-transform: uppercase;
     font-family: "Segoe UI", serif;
@@ -7,6 +18,7 @@ body{
     background: linear-gradient(to top, #dfd2ff, #b99ffc)no-repeat center center / cover;
 }
 #title{
+    margin-top: 0.7em;
     font-size: 5em;
     text-align: center;
 }
@@ -30,6 +42,7 @@ form input {
     width: 100%;
 }
 form button{
+    padding: 0 1em;
     font-weight: bold;
     text-transform: uppercase;
     color: ghostwhite;
@@ -61,14 +74,21 @@ form button:hover{
 
     transition: background-color 0.3s ease;
 }
+
+.confirmed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.done{
+    margin-right: 0.5em;
+}
+
 .done:hover{
     background-color: rgba(159, 255, 111, 0.75);
 }
 .delete:hover{
     background-color: rgba(255, 111, 111, 0.75);
-}
-.delete{
-    margin-right: 0.5em;
 }
 .todo{
     padding: 0.3em 0.6em;
