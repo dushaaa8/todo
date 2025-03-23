@@ -12,7 +12,7 @@ body{
     max-width: 100%;
     margin: 0;
     text-transform: uppercase;
-    font-family: "Segoe UI", serif;
+    font-family: "Roboto", serif;
     min-height: 100vh;
     color: ghostwhite;
     background: linear-gradient(to top, #dfd2ff, #b99ffc)no-repeat center center / cover;
@@ -102,7 +102,6 @@ form button:hover{
     min-width: 15em;
 }
 
-
 li {
     font-weight: bold;
     flex: 1;
@@ -111,4 +110,9 @@ ul {
     list-style: none;
     padding: 0;
     margin: 0;
+}
+@media (max-width: 600px) {
+    #forList{
+        font-size: 1.3em;
+    }
 }
