@@ -3,6 +3,32 @@ document.addEventListener("DOMContentLoaded", function () {
     let input = document.querySelector(".todo-input")
     let list = document.querySelector(".todo-list")
 
+    const placeholders = [
+        '|',
+        'a|',
+        'ad|',
+        'add|',
+        'add a|',
+        'add a t|',
+        'add a ta|',
+        'add a tas|',
+        'add a task|',
+        'add a task.|',
+        'add a task..|',
+        'add a task...|',
+        'add a task...',
+    ];
+    let index = 0;
+
+    setInterval(() => {
+        if (index < placeholders.length) {
+            input.setAttribute("placeholder", placeholders[index]);
+            index++;
+        } else {
+            clearInterval(interval); // Останавливаем анимацию перед выходом за массив
+        }
+    }, 350);
+
     createBtn.addEventListener("click", function(event){
         // not refresh
         event.preventDefault()

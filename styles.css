@@ -1,3 +1,8 @@
+@media (max-width: 450px) {
+    #forList{
+        font-size: 1.3em;
+    }
+}
 * {
     margin: 0;
     padding: 0;
@@ -19,14 +24,18 @@ body{
 }
 #title{
     margin-top: 0.7em;
-    font-size: 5em;
+    font-size: 4em;
     text-align: center;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 form {
     display: flex;
     font-size: 1.7rem;
     justify-content: center;
-    margin: 15px 0;
     padding: 0.8rem;
     width: 100%;
 }
@@ -75,10 +84,7 @@ form button:hover{
     transition: background-color 0.3s ease;
 }
 
-.confirmed {
-    text-decoration: line-through;
-    opacity: 0.6;
-}
+
 
 .done{
     margin-right: 0.5em;
@@ -100,19 +106,103 @@ form button:hover{
     justify-content: space-between;
     width: 100%;
     min-width: 15em;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    flex-wrap: wrap;
 }
 
 li {
-    font-weight: bold;
+    margin-right: 1em;
     flex: 1;
+    position: relative;
+    display: inline-block;
+    transition: opacity 0.5s ease-in-out;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
+}
+
+li::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 2px;
+    background: ghostwhite;
+    transition: width 0.5s ease-in-out;
+}
+
+li.confirmed {
+    opacity: 0.6;
+}
+
+li.confirmed::after {
+    width: 100%;
 }
 ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-@media (max-width: 600px) {
-    #forList{
-        font-size: 1.3em;
+.dropping-texts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1em;
+    position: relative;
+}
+.dropping-texts > div{
+    position: absolute;
+    opacity: 0;
+}
+.dropping-texts > div:nth-child(1) {
+    animation: roll 5s ease-in-out infinite 0s;
+}
+.dropping-texts > div:nth-child(2) {
+    animation: roll 5s ease-in-out infinite 1.67s;
+}
+.dropping-texts > div:nth-child(3) {
+    animation: roll 5s ease-in-out infinite 3.33s;
+}
+@keyframes roll {
+    0% {
+        font-size:0px;
+        opacity:0;
+        margin-left:-30px;
+        margin-top:0px;
+        transform: rotate(-25deg);
+    }
+    3% {
+        opacity:1;
+        transform: rotate(0deg);
+    }
+    5% {
+        font-size:inherit;
+        opacity:1;
+        margin-left:0px;
+        margin-top:0px;
+    }
+    20% {
+        font-size:inherit;
+        opacity:1;
+        margin-left:0px;
+        margin-top:0px;
+        transform: rotate(0deg);
+    }
+    27% {
+        font-size:0px;
+        opacity:0.5;
+        margin-left:20px;
+        margin-top:100px;
+    }
+    100% {
+        font-size:0px;
+        opacity:0;
+        margin-left:-30px;
+        margin-top:0px;
+        transform: rotate(15deg);
     }
 }
