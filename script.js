@@ -3,6 +3,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let input = document.querySelector(".todo-input")
     let list = document.querySelector(".todo-list")
 
+
+    //creating or loading localstorage array
+    let tasksArray = JSON.parse(localStorage.getItem('tasks')) || []
+
+
+    // placeholder animation xd
     const placeholders = [
         '|',
         'a|',
@@ -17,17 +23,21 @@ document.addEventListener("DOMContentLoaded", function () {
         'add a task..|',
         'add a task...|',
         'add a task...',
-    ];
-    let index = 0;
+    ]
+    let index = 0
+
 
     setInterval(() => {
         if (index < placeholders.length) {
-            input.setAttribute("placeholder", placeholders[index]);
-            index++;
-        } else {
-            clearInterval(interval); // Останавливаем анимацию перед выходом за массив
+            input.setAttribute("placeholder", placeholders[index])
+            index++
         }
-    }, 350);
+    }, 350)
+
+    // saving tasks to localstorage
+    function saveTasks() {
+        localStorage.setItem('tasks', JSON.stringify(tasksArray))
+    }
 
     createBtn.addEventListener("click", function(event){
         // not refresh
@@ -44,6 +54,11 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
     function addTask(inputText){
+        if (!tasksArray.includes(inputText)) {
+            tasksArray.push(inputText);
+            saveTasks();
+        }//u cannot create 2 same tasks, load too
+
         // creating task container
         let task = document.createElement('div')
         task.classList.add('todo')
@@ -76,9 +91,12 @@ document.addEventListener("DOMContentLoaded", function () {
         // delete btn does delete
         deleteBtn.addEventListener("click",function (event){
             task.remove()
+            tasksArray = tasksArray.filter(task => task !== inputText) // delete task from tasksArray
+            saveTasks()
         })
 
     }
 
-
-});
+    // loading all tasks
+    tasksArray.forEach(task => addTask(task))
+})
